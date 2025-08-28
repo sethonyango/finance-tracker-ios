@@ -8,7 +8,7 @@ struct ContentView: View {
             TransactionView()
                 .tabItem{
                     VStack {
-                        Image(systemName: "car.fill")
+                        Image(systemName: "house.fill")
                         Text("Home")
                     }
                 }
@@ -16,7 +16,7 @@ struct ContentView: View {
             ExchangesView()
                 .tabItem{
                     VStack {
-                        Image(systemName: "car.fill")
+                        Image(systemName: "arrow.up.arrow.down")
                         Text("Exchanges")
                     }
                 }
@@ -24,16 +24,11 @@ struct ContentView: View {
             Text("More")
                 .tabItem{
                     VStack {
-                        Image(systemName: "car.fill")
+                        Image(systemName: "ellipsis")
                         Text("More")
                     }
                 }
                 .tag(AppStateViewModel.Tab.more)
-
         }
     }
 }
-
-//#Preview {
-//    ContentView()
-//}

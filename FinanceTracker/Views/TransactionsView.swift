@@ -58,7 +58,6 @@ struct TransactionView: View {
                         .foregroundColor(.green)
                 }
                 .padding(.horizontal)
-                if transactions = viewModel.transactions 
                 List(viewModel.transactions.prefix(5)) { tx in
                     HStack {
                         Circle()
