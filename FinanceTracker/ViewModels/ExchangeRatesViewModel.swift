@@ -8,9 +8,13 @@ final class ExchangeRatesViewModel: ObservableObject {
     func loadData() async {
         do {
             let exchange = try await APIClient.shared.fetchExchangeRates()
-            self.exchange = exchange
+            DispatchQueue.main.async {
+                self.exchange = exchange
+            }
         } catch {
-            self.errorMessage = error.localizedDescription
+            DispatchQueue.main.async {
+                self.errorMessage = error.localizedDescription
+            }
         }
     }
     

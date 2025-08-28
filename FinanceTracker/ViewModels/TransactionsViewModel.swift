@@ -8,9 +8,13 @@ final class TransactionsViewModel: ObservableObject {
     func loadData() async {
         do {
             let txs = try await APIClient.shared.fetchTransactions()
-            self.transactions = txs
+            DispatchQueue.main.async {
+                self.transactions = txs
+            }
         } catch {
-            self.errorMessage = error.localizedDescription
+            DispatchQueue.main.async {
+                self.errorMessage = error.localizedDescription
+            }
         }
     }
 }
