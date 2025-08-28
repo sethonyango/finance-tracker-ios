@@ -36,3 +36,26 @@ struct Transaction: TransactionRepresentable, Identifiable, Codable {
     var balance: Float
     var status: String
 }
+
+struct TransactionSummary {
+    let currentBalance: Double
+    let moneyIn: Double
+    let moneyOut: Double
+    let currency: String
+}
+
+extension Array where Element == Transaction {
+    func summary() -> TransactionSummary {
+        let moneyIn = self.filter { $0.type.lowercased() == "in" }.map(\.amount).reduce(0, +)
+        let moneyOut = self.filter { $0.type.lowercased() == "out" }.map(\.amount).reduce(0, +)
+        let currentBalance = self.last?.balance ?? 0
+        let currency = self.last?.currency ?? "KES"
+        
+        return TransactionSummary(
+            currentBalance: Double(currentBalance),
+            moneyIn: moneyIn,
+            moneyOut: moneyOut,
+            currency: currency
+        )
+    }
+}
