@@ -18,7 +18,7 @@ final class TransactionRepository: TransactionRepositoryProtocol {
     }
     
     func fetchTransactions() -> [TransactionEntity] {
-        let request: NSFetchRequest<TransactionEntity> = TransactionEntity.fetchRequest() as! NSFetchRequest<TransactionEntity>
+        let request: NSFetchRequest<TransactionEntity> = TransactionEntity.fetchRequest() 
         do {
             return try context.fetch(request)
         } catch {
